@@ -1,0 +1,3 @@
+To use the proxy, you have to make a man in the middle first and redirect HTTP traffic to the proxy.
+To do so, you can configure your firewall to redirect traffic from port 80 to the proxy. if you're using iptable, you can use the command: iptables -t nat -A PREROUTING -i [interface] -p tcp --dport 80 -j REDIRECT --to-port 80
+and then use Ettercap to perform an Arp spoofing attack.

@@ -1,0 +1,4 @@
+the code for the injection part was greatly inspired by this project: http://lilxam.tuxfamily.org/blog/?p=117.
+However, this the project was unfinished and contained some mistakes, for example, the initial project try to write a new entry in the section table, but without making space before, so the first section was partialy ecrased.
+
+To help me see the results in the injected file, I used PE explorer which can show all informations in the PE headers and informations about sections.
