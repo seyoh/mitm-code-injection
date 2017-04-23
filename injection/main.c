@@ -1,3 +1,21 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @seyoh
+ Sign out
+ Watch 0
+  Star 0
+  Fork 0 seyoh/mitm-code-injection
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathmitm-code-injection/injection/main.c
+9fa3504  on 18 Mar
+@seyoh seyoh Add files via upload
+1 contributor
+RawBlameHistory
+424 lines (335 sloc)  13.2 KB
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -43,7 +61,6 @@ DWORD NumberOfSymbols;
 WORD  SizeOfOptionalHeader;
 WORD  Characteristics;
 }IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;
-
 */
 //fonctions
 PIMAGE_DOS_HEADER GetDOSHeader(HANDLE hBinary)
@@ -361,6 +378,16 @@ void test(HANDLE binaire)
      //pOptionalHeader->MajorLinkerVersion='\x08';
 }
 
+void entryPoint_to_string(char* chaine,HANDLE binaire)
+{
+     PIMAGE_OPTIONAL_HEADER pOptionalHeader = GetOptionalHeader(binaire);
+    char address[4];//4 pour taille DWORD
+    memcpy(address,&(pOptionalHeader->AddressOfEntryPoint),4);
+    sprintf(chaine,"\\x%02x\\x%02x\\x%02x\\x%02x",address[0],address[1],address[2],address[3]);
+
+}
+
+
 
 int main()
 {
@@ -421,3 +448,5 @@ free(binaire);
 
 
 
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
